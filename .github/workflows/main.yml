@@ -1,1 +1,25 @@
-runs-on: self-hosted
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted  # Or use [self-hosted, ubuntu] if you added a label
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
